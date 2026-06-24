@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - claude/nouvel-hair-site-n1ay5y
-      - main
   workflow_dispatch:
 
 permissions:
