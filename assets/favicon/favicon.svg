@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Favicon Nouvel Hair — monogramme NH sur fond or chaud -->
+  <!-- REMPLACER par le logo définitif fourni par le client -->
+  <rect width="100" height="100" rx="18" fill="#C9A96E"/>
+  <text
+    x="50" y="56"
+    font-family="Georgia, serif"
+    font-size="42"
+    font-weight="700"
+    fill="#2C2416"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    letter-spacing="2">NH</text>
+</svg>
