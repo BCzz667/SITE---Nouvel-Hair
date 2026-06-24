@@ -1726,6 +1726,14 @@ p + p { margin-top: .85em; }
   .btn-primary { display: inline-flex; }
 }
 
+/* ─ 900–1150 px : iPad portrait — trop d'éléments dans la nav, masquer le bouton RDV ─ */
+@media (min-width: 900px) and (max-width: 1150px) {
+  .nav-actions .btn-primary { display: none; }
+  .nav-links { gap: var(--space-sm); }
+  .btn-tel span { display: none; } /* garder uniquement l'icône téléphone */
+  .btn-tel { padding-inline: .6rem; }
+}
+
 /* ─ ≥ 1024 px ─ */
 @media (min-width: 1024px) {
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
