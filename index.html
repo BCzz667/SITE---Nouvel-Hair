@@ -69,9 +69,21 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "dayOfWeek": ["Tuesday","Thursday","Friday","Saturday"],
         "opens": "09:00",
-        "closes": "19:00"
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Wednesday"],
+        "opens": "09:00",
+        "closes": "12:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Wednesday"],
+        "opens": "14:00",
+        "closes": "18:00"
       }
     ],
     "aggregateRating": {
@@ -572,23 +584,28 @@
             </div>
           </article>
 
-          <!-- Slot libre -->
-          <article class="team-card team-card--open reveal" aria-label="Nous rejoindre">
+          <!-- Ludivine — apprentie BP -->
+          <article class="team-card reveal">
             <div class="team-photo">
-              <div class="img-placeholder round team-open-placeholder" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
-                  <line x1="12" y1="5" x2="12" y2="19"/>
-                  <line x1="5"  y1="12" x2="19" y2="12"/>
+              <!-- REMPLACER : <img src="assets/img/team-ludivine.jpg"
+                   alt="Ludivine, apprentie BP Coiffure chez Nouvel Hair" loading="lazy" width="320" height="320"> -->
+              <div class="img-placeholder round" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="6"/><circle cx="12" cy="36" r="6"/>
+                  <line x1="42" y1="6"  x2="16.24" y2="31.76"/>
+                  <line x1="28.94" y1="28.96" x2="42" y2="42"/>
+                  <line x1="16.24" y1="16.24" x2="24" y2="24"/>
                 </svg>
               </div>
             </div>
             <div class="team-info">
-              <h3 class="team-name">Vous ?</h3>
-              <p class="team-role">On recrute peut-être</p>
+              <h3 class="team-name">Ludivine</h3>
+              <p class="team-role">Apprentie BP Coiffure</p>
               <p class="team-bio">
-                <!-- MODIFIER selon besoin de recrutement -->
-                Le salon Nouvel Hair est toujours ouvert aux belles rencontres.
-                N'hésitez pas à passer nous voir ou à nous appeler.
+                Titulaire d'un Bac Pro Coiffure, Ludivine entame en septembre
+                sa deuxième et dernière année de Brevet Professionnel.
+                Elle apporte au salon sa fraîcheur et son enthousiasme,
+                en se perfectionnant chaque jour aux côtés de Jess et Pierre.
               </p>
             </div>
           </article>
@@ -943,12 +960,15 @@
                   <strong>Horaires</strong>
                   <table class="hours-table" aria-label="Horaires d'ouverture">
                     <tbody>
-                      <tr><td>Lundi – Vendredi</td><td>09h00 – 19h00</td></tr>
-                      <tr><td>Samedi</td>          <td>09h00 – 19h00</td></tr>
-                      <tr><td>Dimanche</td>        <td class="closed">Fermé</td></tr>
+                      <tr><td>Lundi</td>    <td class="closed">Fermé</td></tr>
+                      <tr><td>Mardi</td>    <td>09h00 – 18h00</td></tr>
+                      <tr><td>Mercredi</td> <td>09h00 – 12h00 &amp; 14h00 – 18h00</td></tr>
+                      <tr><td>Jeudi</td>    <td>09h00 – 18h00</td></tr>
+                      <tr><td>Vendredi</td> <td>09h00 – 18h00</td></tr>
+                      <tr><td>Samedi</td>   <td>09h00 – 18h00</td></tr>
+                      <tr><td>Dimanche</td> <td class="closed">Fermé</td></tr>
                     </tbody>
                   </table>
-                  <!-- HORAIRES À CONFIRMER/AJUSTER avec le client -->
                 </div>
               </div>
             </div><!-- /.contact-details -->
@@ -1090,9 +1110,10 @@
           <!-- HORAIRES À CONFIRMER -->
           <table class="hours-table" aria-label="Horaires d'ouverture">
             <tbody>
-              <tr><td>Lun – Ven</td><td>09h – 19h</td></tr>
-              <tr><td>Samedi</td>   <td>09h – 19h</td></tr>
-              <tr><td>Dimanche</td> <td class="closed">Fermé</td></tr>
+              <tr><td>Lundi</td>              <td class="closed">Fermé</td></tr>
+              <tr><td>Mar · Jeu · Ven · Sam</td><td>09h – 18h</td></tr>
+              <tr><td>Mercredi</td>           <td>09h – 12h &amp; 14h – 18h</td></tr>
+              <tr><td>Dimanche</td>           <td class="closed">Fermé</td></tr>
             </tbody>
           </table>
         </div>
