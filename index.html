@@ -341,178 +341,180 @@
           <p class="section-subtitle reveal">Des tarifs clairs, un service personnalisé</p>
         </header>
 
-        <!-- Onglets -->
-        <div class="tabs reveal" role="tablist" aria-label="Catégories de prestations">
-          <button class="tab active" role="tab" aria-selected="true"  aria-controls="panel-femme"   id="tab-femme">Femme</button>
-          <button class="tab"        role="tab" aria-selected="false" aria-controls="panel-homme"   id="tab-homme">Homme</button>
-          <button class="tab"        role="tab" aria-selected="false" aria-controls="panel-enfant"  id="tab-enfant">Enfant</button>
-          <button class="tab"        role="tab" aria-selected="false" aria-controls="panel-couleur" id="tab-couleur">Couleur</button>
-          <button class="tab"        role="tab" aria-selected="false" aria-controls="panel-soins"   id="tab-soins">Soins</button>
-        </div>
+        <div class="services-grid reveal-stagger">
 
-        <!-- Panneaux -->
-        <div class="tab-panels">
-
-          <!-- Femme -->
-          <div class="tab-panel active" id="panel-femme" role="tabpanel" aria-labelledby="tab-femme">
+          <!-- ── FORFAITS ── -->
+          <div class="services-block services-block--forfaits reveal">
+            <h3 class="services-block-title">Forfaits</h3>
             <ul class="price-list">
               <li class="price-item">
-                <span class="price-name">Shampoing + Coupe + brushing</span>
+                <span class="price-name">Shampooing + coupe + brushing ou mise en plis</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span><!-- PRIX À CONFIRMER -->
+                <span class="price-amount">35€&thinsp;*</span>
               </li>
               <li class="price-item">
-                <span class="price-name">Brushing seul</span>
+                <span class="price-name">Shampooing + coupe + coiffage</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">32€&thinsp;*</span>
               </li>
               <li class="price-item">
-                <span class="price-name">Coupe seule (sans brushing)</span>
+                <span class="price-name">Shampooing + coupe + couleur + brushing ou mise en plis</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">60€&thinsp;*</span>
               </li>
               <li class="price-item">
-                <span class="price-name">Coupe + brushing + couleur</span>
+                <span class="price-name">Shampooing + coupe + couleur + coiffage</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">58€&thinsp;*</span>
               </li>
               <li class="price-item">
-                <span class="price-name">Coupe + brushing + mèches</span>
+                <span class="price-name">Shampooing + permanente + coupe + brushing ou mise en plis</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
-              </li>
-              <li class="price-item">
-                <span class="price-name">Shampoing + brushing</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">80€&thinsp;*</span>
               </li>
             </ul>
           </div>
 
-          <!-- Homme -->
-          <div class="tab-panel" id="panel-homme" role="tabpanel" aria-labelledby="tab-homme" hidden>
+          <!-- ── COUPES ── -->
+          <div class="services-block reveal">
+            <h3 class="services-block-title">Coupes</h3>
             <ul class="price-list">
+              <li class="price-item">
+                <span class="price-name">Coupe femme</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">22€&thinsp;*</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Coupe transformation</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">25€&thinsp;*</span>
+              </li>
               <li class="price-item">
                 <span class="price-name">Coupe homme</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">20€</span>
               </li>
-              <li class="price-item">
-                <span class="price-name">Coupe + barbe</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+              <!-- Coupes enfants — 3 tranches regroupées -->
+              <li class="price-item price-item--block" aria-label="Coupe enfants">
+                <span class="price-name">Coupe enfants</span>
               </li>
-              <li class="price-item">
-                <span class="price-name">Taille de barbe</span>
+              <li class="price-item price-item--sub">
+                <span class="price-name">0 – 6 ans</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">13€</span>
               </li>
-              <li class="price-item">
-                <span class="price-name">Rasage traditionnel</span>
+              <li class="price-item price-item--sub">
+                <span class="price-name">7 – 10 ans</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">15€</span>
               </li>
-              <li class="price-item">
-                <span class="price-name">Shampoing + coupe</span>
+              <li class="price-item price-item--sub price-item--sub-last">
+                <span class="price-name">11 – 16 ans</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Enfant -->
-          <div class="tab-panel" id="panel-enfant" role="tabpanel" aria-labelledby="tab-enfant" hidden>
-            <ul class="price-list">
-              <li class="price-item">
-                <span class="price-name">Coupe enfant (moins de 10 ans)</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
-              </li>
-              <li class="price-item">
-                <span class="price-name">Coupe enfant (10–12 ans)</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
-              </li>
-              <li class="price-item">
-                <span class="price-name">Coupe + brushing enfant (12–14 ans)</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">17€</span>
               </li>
             </ul>
           </div>
 
-          <!-- Couleur -->
-          <div class="tab-panel" id="panel-couleur" role="tabpanel" aria-labelledby="tab-couleur" hidden>
+          <!-- ── PRESTATIONS ── -->
+          <div class="services-block reveal">
+            <h3 class="services-block-title">Prestations</h3>
             <ul class="price-list">
               <li class="price-item">
-                <span class="price-name">Coloration globale</span>
+                <span class="price-name">Shampooing traitant</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">5€</span>
               </li>
               <li class="price-item">
-                <span class="price-name">Mèches / balayage</span>
+                <span class="price-name">Masque</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">8€</span>
               </li>
               <li class="price-item">
-                <span class="price-name">Ombré hair</span>
+                <span class="price-name">Fixateur</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
+                <span class="price-amount">6€</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Anti chute</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">7€</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Brushing</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">20€ à 28€&thinsp;*</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Coiffage</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">19€&thinsp;*</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Mise en plis</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">20€&thinsp;*</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Couleur</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">27€</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Supplément couleur</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">8€</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Ton sur ton</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">28€&thinsp;*</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Mèches</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">50€ à 130€&thinsp;*</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Balayage</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">45€&thinsp;*</span>
+              </li>
+              <li class="price-item">
+                <span class="price-name">Permanente sans ammoniaque</span>
+                <span class="price-dots" aria-hidden="true"></span>
+                <span class="price-amount">52€&thinsp;*</span>
               </li>
               <li class="price-item">
                 <span class="price-name">Décoloration</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">Sur devis</span>
+                <span class="price-amount">52€&thinsp;*</span>
               </li>
               <li class="price-item">
-                <span class="price-name">Couleur végétale / henné</span>
+                <span class="price-name">Patine</span>
                 <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
-              </li>
-              <li class="price-item">
-                <span class="price-name">Correction de couleur</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">Sur devis</span>
+                <span class="price-amount">20€&thinsp;*</span>
               </li>
             </ul>
           </div>
 
-          <!-- Soins -->
-          <div class="tab-panel" id="panel-soins" role="tabpanel" aria-labelledby="tab-soins" hidden>
-            <ul class="price-list">
-              <li class="price-item">
-                <span class="price-name">Soin profondeur (Kérastase / équivalent)</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">-- €</span>
-              </li>
-              <li class="price-item">
-                <span class="price-name">Lissage brésilien</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">Sur devis</span>
-              </li>
-              <li class="price-item">
-                <span class="price-name">Permanente</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">Sur devis</span>
-              </li>
-              <li class="price-item">
-                <span class="price-name">Défrisage</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">Sur devis</span>
-              </li>
-              <li class="price-item">
-                <span class="price-name">Chignon / coiffure de cérémonie</span>
-                <span class="price-dots" aria-hidden="true"></span>
-                <span class="price-amount">Sur devis</span>
-              </li>
-            </ul>
-          </div>
-
-        </div><!-- /.tab-panels -->
+        </div><!-- /.services-grid -->
 
         <p class="services-note reveal">
-          * Tarifs à compléter. Contactez-nous ou venez directement au salon pour un devis personnalisé.
+          * Tarif cheveux courts — nous consulter pour les longueurs
         </p>
+
+        <!-- CTA bas de section -->
+        <div class="services-cta reveal">
+          <p class="services-cta-title">Prenez rendez-vous dès maintenant&nbsp;!</p>
+          <a href="tel:+33494944947" class="btn btn-primary btn-lg"
+             aria-label="Appeler le salon au 04 94 94 49 47">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 13.4a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2.82h3a2 2 0 012 1.72c.128.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.572 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            04 94 94 49 47
+          </a>
+        </div>
 
       </div>
     </section>
