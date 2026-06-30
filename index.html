@@ -336,16 +336,23 @@
       <div class="container">
 
         <header class="section-header">
-          <p class="section-eyebrow reveal"></p>
+          <p class="section-eyebrow reveal">Nos tarifs</p>
           <h2 id="services-title" class="section-title reveal">Nos Prestations</h2>
           <p class="section-subtitle reveal">Des tarifs clairs, un service personnalisé</p>
         </header>
 
-        <div class="services-grid reveal-stagger">
+        <!-- Onglets -->
+        <div class="tabs reveal" role="tablist" aria-label="Catégories de prestations">
+          <button class="tab active" role="tab" aria-selected="true"  aria-controls="panel-forfaits"    id="tab-forfaits">Forfaits</button>
+          <button class="tab"        role="tab" aria-selected="false" aria-controls="panel-coupes"      id="tab-coupes">Coupes</button>
+          <button class="tab"        role="tab" aria-selected="false" aria-controls="panel-prestations" id="tab-prestations">Prestations</button>
+        </div>
+
+        <!-- Panneaux -->
+        <div class="tab-panels reveal">
 
           <!-- ── FORFAITS ── -->
-          <div class="services-block services-block--forfaits reveal">
-            <h3 class="services-block-title">Forfaits</h3>
+          <div class="tab-panel active" id="panel-forfaits" role="tabpanel" aria-labelledby="tab-forfaits">
             <ul class="price-list">
               <li class="price-item">
                 <span class="price-name">Shampooing + coupe + brushing ou mise en plis</span>
@@ -376,8 +383,7 @@
           </div>
 
           <!-- ── COUPES ── -->
-          <div class="services-block reveal">
-            <h3 class="services-block-title">Coupes</h3>
+          <div class="tab-panel" id="panel-coupes" role="tabpanel" aria-labelledby="tab-coupes" hidden>
             <ul class="price-list">
               <li class="price-item">
                 <span class="price-name">Coupe femme</span>
@@ -417,9 +423,8 @@
           </div>
 
           <!-- ── PRESTATIONS ── -->
-          <div class="services-block reveal">
-            <h3 class="services-block-title">Prestations</h3>
-            <ul class="price-list">
+          <div class="tab-panel" id="panel-prestations" role="tabpanel" aria-labelledby="tab-prestations" hidden>
+            <ul class="price-list price-list--cols">
               <li class="price-item">
                 <span class="price-name">Shampooing traitant</span>
                 <span class="price-dots" aria-hidden="true"></span>
@@ -498,7 +503,7 @@
             </ul>
           </div>
 
-        </div><!-- /.services-grid -->
+        </div><!-- /.tab-panels -->
 
         <p class="services-note reveal">
           * Tarif cheveux courts — nous consulter pour les longueurs
