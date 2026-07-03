@@ -14,6 +14,7 @@
    07. Gallery lightbox      (ouvrir / naviguer / fermer)
    08. Form validation       (front uniquement — brancher backend)
    09. Année courante footer
+   10. Chiffres dynamiques   (ancienneté salon + expérience patronne)
    ============================================================ */
 
 'use strict';
@@ -22,6 +23,31 @@
 
 const qs  = (sel, ctx = document) => ctx.querySelector(sel);
 const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
+
+/* ── Constantes de référence — CHIFFRES DYNAMIQUES ─────────────
+   Ces valeurs servent à calculer automatiquement l'ancienneté du
+   salon et l'expérience de la patronne à partir de l'année en cours,
+   pour qu'elles restent justes sans intervention chaque année.
+
+   ► POUR AJUSTER CES CHIFFRES un jour (ex : si l'on apprend la date
+     exacte de fondation du salon), il suffit de modifier REF_YEAR et
+     les valeurs de référence ci-dessous — rien d'autre à toucher.
+
+   ⚠ L'année de reprise (2021) est une date FIXE dans le passé :
+     elle n'est PAS recalculée et reste écrite en dur dans le HTML. */
+
+const REF_YEAR                = 2026; // année de référence des valeurs ci-dessous
+const SALON_ANCIENNETE_REF    = 35;   // ancienneté du salon en REF_YEAR (« plus de 35 ans »)
+const EXPERIENCE_PATRONNE_REF = 27;   // expérience de la patronne en REF_YEAR
+const ANNEE_REPRISE           = 2021; // année de reprise du salon — FIXE, ne bouge jamais
+
+/* Ajoute à une valeur de référence le nombre d'années écoulées
+   depuis son année de référence. */
+function calculerAnneeDynamique(refValue, refYear) {
+  const currentYear = new Date().getFullYear();
+  return refValue + (currentYear - refYear);
+}
 
 
 /* ── 01. Theme switcher ───────────────────────────────────── */
@@ -447,4 +473,36 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 (function initYear() {
   const el = qs('#currentYear');
   if (el) el.textContent = new Date().getFullYear();
+})();
+
+
+/* ── 10. Chiffres dynamiques ──────────────────────────────────
+   Injecte l'ancienneté du salon et l'expérience de la patronne,
+   calculées automatiquement à partir des constantes de référence
+   définies en haut de ce fichier.
+
+   Deux formats selon l'attribut HTML :
+   · data-dynamic="clé"      → texte complet « X ans »  (accroches, texte)
+   · data-dynamic-num="clé"  → nombre seul « X »        (badges, compteurs)
+
+   Fallback sans JS : chaque élément contient déjà une valeur statique
+   en dur dans le HTML (ex : « 35 ans »), donc rien n'apparaît vide. */
+
+(function initDynamicYears() {
+  const values = {
+    'anciennete-salon':    calculerAnneeDynamique(SALON_ANCIENNETE_REF,    REF_YEAR),
+    'experience-patronne': calculerAnneeDynamique(EXPERIENCE_PATRONNE_REF, REF_YEAR),
+  };
+
+  // Format « X ans »
+  qsa('[data-dynamic]').forEach(el => {
+    const val = values[el.dataset.dynamic];
+    if (val != null) el.textContent = val + ' ans';
+  });
+
+  // Format nombre seul « X »
+  qsa('[data-dynamic-num]').forEach(el => {
+    const val = values[el.dataset.dynamicNum];
+    if (val != null) el.textContent = val;
+  });
 })();

@@ -224,7 +224,8 @@
             <em>entre de bonnes mains</em>
           </h1>
           <p class="hero-subtitle">
-            27 ans de passion et de savoir-faire, au service de chaque client depuis La Seyne-sur-Mer.
+            <!-- "27 ans" ci-dessous est un fallback statique remplacé dynamiquement par le JS -->
+            <span data-dynamic="experience-patronne">27 ans</span> de passion et de savoir-faire, au service de chaque client depuis La Seyne-sur-Mer.
           </p>
           <div class="hero-actions">
             <a href="#contact" class="btn btn-primary btn-lg">
@@ -273,7 +274,8 @@
               </div>
             </div>
             <div class="about-badge" aria-hidden="true">
-              <strong>27</strong>
+              <!-- "27" = fallback statique remplacé par le JS -->
+              <strong data-dynamic-num="experience-patronne">27</strong>
               <span>ans de métier</span>
             </div>
           </div>
@@ -293,10 +295,13 @@
                 de clients devenus amis, d'une maison qui l'a formée avant qu'elle ne la guide.
               </p>
               <p>
-                Il y a 4 ans, elle en a repris les rênes — avec la fierté de perpétuer
-                l'esprit d'un lieu qui a su se faire aimer depuis plus de 10 ans.
-                Avec <strong>27 ans de passion</strong>, elle apporte la rigueur de
-                l'expérience et la chaleur d'une vraie connaisseuse de la maison.
+                <!-- 2021 = année de reprise FIXE, ne pas rendre dynamique -->
+                En 2021, elle en a repris les rênes — avec la fierté de perpétuer
+                l'esprit d'un lieu qui a su se faire aimer depuis plus de
+                <span data-dynamic="anciennete-salon">35 ans</span>.
+                Avec <strong><span data-dynamic="experience-patronne">27 ans</span> de passion</strong>,
+                elle apporte la rigueur de l'expérience et la chaleur d'une vraie
+                connaisseuse de la maison.
               </p>
               <p>
                 Pierre, fidèle à ses côtés, partage cette même exigence :
@@ -308,11 +313,11 @@
             <!-- Stats -->
             <div class="about-stats reveal-stagger" aria-label="Chiffres clés">
               <div class="stat reveal">
-                <strong class="stat-number">27</strong>
+                <strong class="stat-number" data-dynamic-num="experience-patronne">27</strong>
                 <span class="stat-label">ans d'expérience de Jess</span>
               </div>
               <div class="stat reveal">
-                <strong class="stat-number">+10</strong>
+                <strong class="stat-number">+<span data-dynamic-num="anciennete-salon">35</span></strong>
                 <span class="stat-label">ans d'histoire du salon</span>
               </div>
               <div class="stat reveal">
@@ -557,8 +562,10 @@
               <p class="team-role">Patronne &amp; coiffeuse</p>
               <p class="team-bio">
                 Passionnée par la coiffure depuis toujours, Jess a commencé ici même
-                en tant qu'apprentie avant d'y consacrer 27 ans de métier.
-                Elle a repris le salon il y a 4 ans avec l'envie de perpétuer ce qui
+                en tant qu'apprentie avant d'y consacrer
+                <span data-dynamic="experience-patronne">27 ans</span> de métier.
+                <!-- 2021 = année de reprise FIXE, ne pas rendre dynamique -->
+                Elle a repris le salon en 2021 avec l'envie de perpétuer ce qui
                 en fait un lieu unique : créativité, écoute et sens du détail.
                 Elle saura vous conseiller et sublimer votre style avec chaleur.
               </p>
