@@ -25,6 +25,7 @@
    18. Footer
    19. Reveal Animations
    20. Media Queries
+   21. Pages légales (mentions légales, confidentialité)
    ============================================================ */
 
 
@@ -1829,3 +1830,265 @@ p + p { margin-top: .85em; }
 @media (min-width: 1200px) {
   :root { --header-h: 80px; }
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   21. PAGES LÉGALES  (mentions-legales.html, politique-confidentialite.html)
+   ══════════════════════════════════════════════════════════════ */
+
+/* Conteneur resserré : ~70 caractères par ligne pour le confort de lecture */
+.container--narrow { width: min(100%, 820px); }
+
+/* Sur les pages internes il n'y a pas de hero sombre derrière le header :
+   celui-ci reste donc opaque en permanence (classe .scrolled posée dans le HTML). */
+.subpage { padding-top: var(--header-h); }
+
+.legal { padding-block: var(--space-2xl) var(--space-3xl); }
+
+/* ── En-tête de page ── */
+.legal-header {
+  padding-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.legal-title {
+  font-size: var(--fs-3xl);
+  font-weight: 400;
+  margin-bottom: var(--space-sm);
+}
+
+.legal-updated {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+  letter-spacing: .04em;
+}
+.legal-updated strong { color: var(--color-gold); font-weight: 600; }
+
+/* ── Chapeau introductif ── */
+.legal-intro {
+  font-size: var(--fs-base);
+  color: var(--color-muted);
+  line-height: 1.8;
+  margin-bottom: var(--space-2xl);
+}
+
+/* Encadré « l'essentiel » */
+.legal-callout {
+  margin-top: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-surface);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--color-text);
+}
+.legal-callout strong { color: var(--color-gold); }
+
+/* ── Sections numérotées ── */
+.legal-section { margin-bottom: var(--space-2xl); }
+
+.legal-section h2 {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.legal-num {
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-gold);
+  min-width: 1.8em;
+}
+
+.legal-section h3 {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text);
+}
+
+.legal-section p { color: var(--color-muted); line-height: 1.8; }
+.legal-section p + p { margin-top: .85em; }
+.legal-section strong { color: var(--color-text); }
+
+.legal-section code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .9em;
+  padding: .15em .45em;
+  background-color: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+
+/* ── Listes de définitions (identité, coordonnées…) ── */
+.legal-dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .2rem var(--space-lg);
+  margin-block: var(--space-md);
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.legal-dl dt {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding-top: var(--space-xs);
+}
+
+.legal-dl dd {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+.legal-dl dd:last-child { margin-bottom: 0; }
+.legal-dl a { color: var(--color-gold); text-decoration: underline; text-underline-offset: 2px; }
+.legal-dl a:hover { color: var(--color-gold-dark); }
+
+@media (min-width: 640px) {
+  .legal-dl { grid-template-columns: minmax(11rem, auto) 1fr; align-items: baseline; }
+  .legal-dl dt { padding-top: 0; }
+  .legal-dl dd { margin-bottom: var(--space-xs); }
+}
+
+/* ── Listes ── */
+.legal-list {
+  margin: var(--space-md) 0 var(--space-md) 0;
+  padding-left: var(--space-lg);
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+.legal-list li { margin-bottom: .5em; }
+.legal-list strong { color: var(--color-text); }
+
+/* Liste « ce que nous ne faisons pas » : puces remplacées par une coche */
+.legal-list--check { list-style: none; padding-left: 0; }
+.legal-list--check li {
+  position: relative;
+  padding-left: 1.8rem;
+}
+.legal-list--check li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* ── Tableau des traitements ── */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-block: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.legal-table {
+  width: 100%;
+  min-width: 640px;          /* force le scroll horizontal sur mobile plutôt que d'écraser */
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+
+.legal-table th,
+.legal-table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+  line-height: 1.6;
+}
+
+.legal-table thead th {
+  background-color: var(--color-surface-2);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.legal-table tbody th {
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+.legal-table td { color: var(--color-muted); }
+.legal-table tbody tr:last-child th,
+.legal-table tbody tr:last-child td { border-bottom: none; }
+
+/* ── Notes de bas de section ── */
+.legal-note {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+
+/* ── Précision discrète entre parenthèses ── */
+.hint {
+  font-size: .88em;
+  color: var(--color-muted);
+  font-style: italic;
+  opacity: .85;
+}
+
+/* ── Marqueur « à compléter » — volontairement très visible ──
+   Chaque occurrence signale une information que le salon doit fournir.
+   Rechercher class="todo" dans les deux pages pour toutes les lister. */
+mark.todo {
+  display: inline-block;
+  padding: .1em .6em;
+  background-color: #FFE9A8;
+  color: #6B4E00;
+  border: 1px dashed #C9A227;
+  border-radius: var(--radius-sm);
+  font-size: .88em;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+[data-theme="dark"] mark.todo {
+  background-color: #4A3B12;
+  color: #F5D97A;
+  border-color: #8A7433;
+}
+
+/* ── Bouton retour ── */
+.legal-back {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── Utilitaire : visible uniquement pour les lecteurs d'écran ── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Deux liens légaux dans le pied de page : petit espacement */
+.footer-bottom nav { display: flex; gap: var(--space-md); flex-wrap: wrap; }

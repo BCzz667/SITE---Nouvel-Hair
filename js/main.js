@@ -92,6 +92,14 @@ function anneesDepuis(annee) {
   const header = qs('#header');
   if (!header) return;
 
+  /* Pages internes (mentions légales, confidentialité) : pas de hero sombre
+     derrière l'en-tête, celui-ci reste donc opaque en permanence — sinon le
+     texte blanc prévu pour le hero serait illisible sur fond clair. */
+  if (document.body.classList.contains('subpage')) {
+    header.classList.add('scrolled');
+    return;
+  }
+
   let ticking = false;
 
   function update() {

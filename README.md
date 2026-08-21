@@ -21,7 +21,9 @@ Le site reste fonctionnel sans connexion (polices de secours système).
 
 ```
 /
-├── index.html              page principale
+├── index.html                        page principale
+├── mentions-legales.html             mentions légales (LCEN)
+├── politique-confidentialite.html    politique de confidentialité (RGPD)
 ├── css/
 │   └── style.css           feuille de styles (un seul fichier)
 ├── js/
@@ -195,6 +197,63 @@ Le site est 100 % statique (HTML + CSS + JS). Aucun serveur PHP ni base de donn�
 
 ---
 
+## Pages légales et conformité RGPD
+
+Deux pages sont liées depuis le pied de page de toutes les pages du site :
+
+| Page | Fondement juridique |
+|------|---------------------|
+| `mentions-legales.html` | Article 6 de la LCEN (loi n° 2004-575), modifiée par la loi SREN du 21 mai 2024 |
+| `politique-confidentialite.html` | RGPD (UE) 2016/679 + loi Informatique et Libertés n° 78-17 |
+
+### Champs à compléter
+
+Chaque information manquante est **surlignée en jaune** sur la page, avec la mention
+« à compléter ». Impossible de la manquer à l'œil nu.
+
+Pour les compter depuis un terminal :
+
+```bash
+grep -c 'class="todo"' mentions-legales.html politique-confidentialite.html
+```
+
+**13 champs** dans les mentions légales, **4** dans la politique de confidentialité.
+
+### ⚠️ Obligation à ne pas négliger : le médiateur de la consommation
+
+Tout professionnel vendant à des particuliers doit adhérer à un médiateur de la
+consommation et afficher ses coordonnées (articles L.612-1 et suivants du code de la
+consommation). L'absence de cette mention est passible d'une amende administrative
+pouvant atteindre 15 000 €.
+
+Il s'agit d'une adhésion payante auprès d'un organisme agréé (CM2C, Medicys, AME Conso,
+CNPM Médiation…), de l'ordre de quelques dizaines d'euros par an pour une petite
+structure.
+
+> À noter : la plateforme européenne de règlement en ligne des litiges (RLL/ODR) a
+> définitivement fermé le 20 juillet 2025, en application du règlement (UE) 2024/3228.
+> Les modèles de mentions légales qui la citent encore sont obsolètes — elle
+> n'apparaît volontairement pas ici.
+
+### Deux points de conformité technique restants
+
+Le site charge deux ressources hébergées par Google **avant tout consentement du
+visiteur**, ce que la CNIL n'autorise pas :
+
+| Ressource | Ce qui est transmis | Correction recommandée |
+|-----------|---------------------|------------------------|
+| Carte Google Maps | Adresse IP + dépôt de cookies Google | Charger la carte au clic uniquement |
+| Polices Google Fonts | Adresse IP | Héberger les polices sur le site |
+
+Une fois ces deux points corrigés, le site ne dépose **plus aucun traceur tiers** et
+**aucun bandeau cookies n'est nécessaire** — plus simple, plus rapide, et plus
+respectueux des visiteurs.
+
+Le seul stockage restant est la préférence de thème (`nh-theme`), qui ne quitte jamais
+le navigateur et est expressément dispensée de consentement.
+
+---
+
 ## Checklist avant mise en ligne
 
 - [ ] Remplacer toutes les photos placeholders
@@ -206,7 +265,9 @@ Le site est 100 % statique (HTML + CSS + JS). Aucun serveur PHP ni base de donn�
 - [ ] Ajouter les liens réseaux sociaux (Instagram, Facebook)
 - [ ] Remplacer le favicon par le logo définitif
 - [ ] Mettre à jour le Schema.org JSON-LD (URL + horaires définitifs)
-- [ ] Créer et ajouter la page Mentions Légales
+- [ ] **Compléter les 17 champs « à compléter » des pages légales** (voir section dédiée)
+- [ ] **Adhérer à un médiateur de la consommation** (obligation légale)
+- [ ] Traiter les deux points de conformité RGPD (carte Google Maps + polices)
 - [ ] Tester sur mobile (iPhone + Android)
 - [ ] Tester la navigation clavier (Tab, Entrée, Échap)
 
@@ -234,7 +295,16 @@ Pour finaliser le site, les éléments suivants sont nécessaires :
 
 7. **Code d'intégration Google Maps** (depuis la fiche Google Business)
 
-8. **Mentions légales** (nom complet, SIRET, adresse du siège, hébergeur)
+8. **Informations légales** — nécessaires aux mentions légales et à la politique de
+   confidentialité (17 champs, tous surlignés en jaune sur les pages) :
+   - Forme juridique et, le cas échéant, capital social
+   - Numéros SIREN et SIRET
+   - Numéro de TVA intracommunautaire (ou mention de franchise en base)
+   - Nom et prénom du directeur de la publication
+   - Adresse e-mail de contact (**obligatoire** — la LCEN exige un contact direct)
+   - Compagnie et numéro de contrat d'assurance responsabilité civile professionnelle
+   - Intitulé exact du titre professionnel de coiffure
+   - **Médiateur de la consommation** : nom, adresse postale, site internet
 
 ---
 
