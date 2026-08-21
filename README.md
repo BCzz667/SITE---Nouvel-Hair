@@ -56,13 +56,30 @@ commentaire HTML :
 
 ### Horaires
 
-Chercher `<!-- HORAIRES À CONFIRMER -->` dans `index.html`.
-Deux occurrences : section Contact et Footer.
+Les horaires figurent à deux endroits d'`index.html` : dans la section Contact
+(tableau détaillé, jour par jour) et dans le pied de page (version condensée).
+Chercher `<td>Mardi</td>` pour les localiser.
+
+⚠️ Si vous modifiez les horaires, pensez à mettre à jour aussi le bloc
+`openingHoursSpecification` des données structurées Schema.org, en haut du fichier.
 
 ### Tarifs
 
-Chercher `<!-- PRIX À CONFIRMER -->` dans `index.html`.
-Remplacer chaque `-- €` par le tarif réel.
+Les tarifs sont dans la section Prestations, répartis en trois onglets
+(`panel-forfaits`, `panel-coupes`, `panel-prestations`).
+
+Chaque ligne suit la même structure — il suffit de modifier le montant :
+
+```html
+<li class="price-item">
+  <span class="price-name">Coupe femme</span>
+  <span class="price-dots" aria-hidden="true"></span>
+  <span class="price-amount">22€&thinsp;*</span>
+</li>
+```
+
+L'astérisque signale un tarif « cheveux courts ». Pour ajouter une prestation,
+dupliquez un bloc `<li>` complet.
 
 ### Téléphone / Adresse
 
@@ -80,7 +97,7 @@ remplacez chaque bloc `<!-- REMPLACER : ... -->` par la balise `<img>` correspon
 | `hero-bg.jpg`            | Hero       | 16:9 · 1920×1080 | 300 ko    |
 | `about-patronne.jpg`     | À propos   | 4:5 · 800×1000   | 150 ko    |
 | `team-jess.jpg`          | Équipe     | 1:1 · 640×640    | 80 ko     |
-| `team-jessica.jpg`       | Équipe     | 1:1 · 640×640    | 80 ko     |
+| `team-ludivine.jpg`      | Équipe     | 1:1 · 640×640    | 80 ko     |
 | `team-pierre.jpg`        | Équipe     | 1:1 · 640×640    | 80 ko     |
 | `gallery-01.jpg` … `06`  | Galerie    | 4:5 · 800×1000   | 150 ko    |
 
@@ -156,13 +173,29 @@ de `fetch()` prêt à l'emploi.
 
 ## Carte Google Maps
 
-Pour utiliser le code d'intégration officiel de votre fiche Google :
+La carte interroge Google par **nom d'établissement** plutôt que par adresse :
 
-1. Aller sur votre fiche Google Maps
-2. Clic **Partager** → **Intégrer une carte** → **Copier le code HTML**
-3. Remplacer l'`<iframe src="…">` dans la section Contact de `index.html`
+```
+?q=Nouvel+Hair%2C+32+Rte+de+Fabregas%2C+83500+La+Seyne-sur-Mer&hl=fr&output=embed&z=17
+```
 
-Chercher `<!-- REMPLACER le src par le code d'intégration Google Maps -->`.
+C'est ce qui fait apparaître « Nouvel Hair » sur le repère et dans l'infobulle.
+Une recherche par simple adresse afficherait le nom de la résidence (« le Solazur »).
+
+| Paramètre | Rôle |
+|-----------|------|
+| `q` | Recherche — le nom du salon en premier |
+| `hl=fr` | Libellés de la carte en français |
+| `z` | Niveau de zoom (17 = échelle de la rue) |
+
+### Version plus fiable : le code officiel de votre fiche
+
+La recherche textuelle dépend de la façon dont Google interprète la requête. Pour
+pointer vers l'identifiant exact de l'établissement :
+
+1. Google Maps → votre fiche **Nouvel Hair**
+2. **Partager** → **Intégrer une carte** → **Copier le code HTML**
+3. Remplacer l'URL du `src` de l'`<iframe>` dans la section Contact d'`index.html`
 
 ---
 

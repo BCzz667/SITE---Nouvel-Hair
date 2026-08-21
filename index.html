@@ -1043,18 +1043,25 @@
 
           <!-- Colonne droite : carte Google Maps -->
           <div class="contact-map reveal">
-            <!-- REMPLACER le src par le code d'intégration Google Maps de votre fiche :
-                 Google Maps → votre fiche → Partager → Intégrer une carte → Copier le code HTML
-                 URL actuelle : approximation via adresse -->
+            <!-- La requête interroge Google par NOM D'ÉTABLISSEMENT (« Nouvel Hair ») et non
+                 par simple adresse : c'est ce qui fait apparaître le nom du salon sur le repère
+                 et dans l'infobulle, au lieu du nom de la résidence (« le Solazur »).
+                 · hl=fr  → libellés de la carte en français
+                 · z=17   → zoom rapproché sur la rue
+
+                 ALTERNATIVE PLUS FIABLE — utiliser le code officiel de votre fiche Google :
+                 Google Maps → fiche Nouvel Hair → Partager → Intégrer une carte → Copier le HTML,
+                 puis remplacer l'URL du src ci-dessous. Ce code pointe vers l'identifiant exact
+                 de l'établissement et ne dépend plus d'une recherche textuelle. -->
             <iframe
-              src="https://maps.google.com/maps?q=32+Route+de+Fabregas+83500+La+Seyne-sur-Mer+France&output=embed&z=15"
+              src="https://maps.google.com/maps?q=Nouvel+Hair%2C+32+Rte+de+Fabregas%2C+83500+La+Seyne-sur-Mer&amp;hl=fr&amp;output=embed&amp;z=17"
               width="100%"
               height="100%"
               style="border:0; min-height:400px;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Localisation du salon Nouvel Hair — Le Solazur, 32 Route de Fabregas, La Seyne-sur-Mer"
+              title="Carte : salon Nouvel Hair, 32 route de Fabregas, 83500 La Seyne-sur-Mer"
               aria-label="Carte Google Maps du salon Nouvel Hair">
             </iframe>
             <a href="https://maps.app.goo.gl/q5pgXBnP4dz5LY1N9"
