@@ -6,7 +6,11 @@
 
   <!-- ═══ SEO ═══════════════════════════════════════════════════════ -->
   <title>Nouvel Hair — Salon de coiffure mixte | La Seyne-sur-Mer (83500)</title>
-  <meta name="description" content="Salon de coiffure mixte Nouvel Hair à La Seyne-sur-Mer. Jess et son équipe vous accueillent du lundi au samedi. 27 ans d'expérience, accueil chaleureux, tarifs clairs. Prenez rendez-vous !">
+  <!-- Le contenu ci-dessous est réécrit au chargement par main.js à partir de data-dynamic-tpl
+       ({experience} / {anciennete}). La valeur en dur sert de repli sans JavaScript. -->
+  <meta name="description"
+        data-dynamic-tpl="Salon de coiffure mixte Nouvel Hair à La Seyne-sur-Mer. Jess et son équipe vous accueillent du mardi au samedi. {experience} ans d'expérience, accueil chaleureux, tarifs clairs. Prenez rendez-vous !"
+        content="Salon de coiffure mixte Nouvel Hair à La Seyne-sur-Mer. Jess et son équipe vous accueillent du mardi au samedi. 27 ans d'expérience, accueil chaleureux, tarifs clairs. Prenez rendez-vous !">
   <meta name="robots" content="index, follow">
   <!-- REMPLACER l'URL ci-dessous par l'URL définitive du site -->
   <link rel="canonical" href="https://www.nouvel-hair.fr/">
@@ -15,7 +19,9 @@
   <meta property="og:type"        content="website">
   <meta property="og:locale"      content="fr_FR">
   <meta property="og:title"       content="Nouvel Hair — Salon de coiffure mixte | La Seyne-sur-Mer">
-  <meta property="og:description" content="27 ans de passion et de savoir-faire. Jess et son équipe vous accueillent du lundi au samedi au cœur de La Seyne-sur-Mer.">
+  <meta property="og:description"
+        data-dynamic-tpl="{experience} ans de passion et de savoir-faire. Jess et son équipe vous accueillent du mardi au samedi au cœur de La Seyne-sur-Mer."
+        content="27 ans de passion et de savoir-faire. Jess et son équipe vous accueillent du mardi au samedi au cœur de La Seyne-sur-Mer.">
   <!-- REMPLACER les deux URL ci-dessous -->
   <meta property="og:url"         content="https://www.nouvel-hair.fr/">
   <meta property="og:image"       content="https://www.nouvel-hair.fr/assets/img/hero-bg.jpg">
@@ -295,8 +301,8 @@
                 de clients devenus amis, d'une maison qui l'a formée avant qu'elle ne la guide.
               </p>
               <p>
-                <!-- 2021 = année de reprise FIXE, ne pas rendre dynamique -->
-                En 2021, elle en a repris les rênes — avec la fierté de perpétuer
+                <!-- Année de reprise : pilotée par ANNEE_REPRISE dans js/main.js -->
+                En <span data-dynamic-year="annee-reprise">2021</span>, elle en a repris les rênes — avec la fierté de perpétuer
                 l'esprit d'un lieu qui a su se faire aimer depuis plus de
                 <span data-dynamic="anciennete-salon">35 ans</span>.
                 Avec <strong><span data-dynamic="experience-patronne">27 ans</span> de passion</strong>,
@@ -564,8 +570,8 @@
                 Passionnée par la coiffure depuis toujours, Jess a commencé ici même
                 en tant qu'apprentie avant d'y consacrer
                 <span data-dynamic="experience-patronne">27 ans</span> de métier.
-                <!-- 2021 = année de reprise FIXE, ne pas rendre dynamique -->
-                Elle a repris le salon en 2021 avec l'envie de perpétuer ce qui
+                <!-- Année de reprise : pilotée par ANNEE_REPRISE dans js/main.js -->
+                Elle a repris le salon en <span data-dynamic-year="annee-reprise">2021</span> avec l'envie de perpétuer ce qui
                 en fait un lieu unique : créativité, écoute et sens du détail.
                 Elle saura vous conseiller et sublimer votre style avec chaleur.
               </p>
@@ -1150,7 +1156,7 @@
       <!-- Footer bottom -->
       <div class="footer-bottom">
         <p>
-          &copy; <span id="currentYear"></span> Nouvel Hair · La Seyne-sur-Mer
+          &copy; <span data-dynamic-year="annee-courante">2026</span> Nouvel Hair · La Seyne-sur-Mer
           <!-- REMPLACER le nom du prestataire web si souhaité -->
         </p>
         <nav aria-label="Liens légaux">

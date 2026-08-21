@@ -13,8 +13,7 @@
    06. Services tabs         (onglets accessibles)
    07. Gallery lightbox      (ouvrir / naviguer / fermer)
    08. Form validation       (front uniquement — brancher backend)
-   09. Année courante footer
-   10. Chiffres dynamiques   (ancienneté salon + expérience patronne)
+   09. Chiffres & dates dynamiques (ancienneté, expérience, années)
    ============================================================ */
 
 'use strict';
@@ -25,28 +24,31 @@ const qs  = (sel, ctx = document) => ctx.querySelector(sel);
 const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
 
-/* ── Constantes de référence — CHIFFRES DYNAMIQUES ─────────────
-   Ces valeurs servent à calculer automatiquement l'ancienneté du
-   salon et l'expérience de la patronne à partir de l'année en cours,
-   pour qu'elles restent justes sans intervention chaque année.
+/* ══ DATES DE RÉFÉRENCE — SOURCE UNIQUE DE VÉRITÉ ══════════════
+   Tous les chiffres d'ancienneté affichés sur le site (ancienneté du
+   salon, expérience de la patronne, années depuis la reprise, année
+   des crédits…) sont calculés à partir des ANNÉES FIXES ci-dessous.
 
-   ► POUR AJUSTER CES CHIFFRES un jour (ex : si l'on apprend la date
-     exacte de fondation du salon), il suffit de modifier REF_YEAR et
-     les valeurs de référence ci-dessous — rien d'autre à toucher.
+   ► Le site se met à jour TOUT SEUL chaque 1er janvier.
+     Aucune intervention annuelle n'est nécessaire.
 
-   ⚠ L'année de reprise (2021) est une date FIXE dans le passé :
-     elle n'est PAS recalculée et reste écrite en dur dans le HTML. */
+   ► POUR CORRIGER UN CHIFFRE : ne modifiez QUE l'année d'origine
+     ci-dessous, jamais les nombres affichés dans index.html.
+     Exemple : si le salon a en réalité été créé en 1989, remplacez
+     1991 par 1989 — tous les « X ans » du site suivent aussitôt.
 
-const REF_YEAR                = 2026; // année de référence des valeurs ci-dessous
-const SALON_ANCIENNETE_REF    = 35;   // ancienneté du salon en REF_YEAR (« plus de 35 ans »)
-const EXPERIENCE_PATRONNE_REF = 27;   // expérience de la patronne en REF_YEAR
-const ANNEE_REPRISE           = 2021; // année de reprise du salon — FIXE, ne bouge jamais
+   Vérification (en 2026) :
+     2026 − 1991 = 35 ans d'existence du salon
+     2026 − 1999 = 27 ans de métier pour Jess
+     2026 − 2021 =  5 ans depuis la reprise                        */
 
-/* Ajoute à une valeur de référence le nombre d'années écoulées
-   depuis son année de référence. */
-function calculerAnneeDynamique(refValue, refYear) {
-  const currentYear = new Date().getFullYear();
-  return refValue + (currentYear - refYear);
+const ANNEE_CREATION_SALON = 1991; // création du salon        → « 35 ans » en 2026
+const ANNEE_DEBUT_METIER   = 1999; // début de métier de Jess  → « 27 ans » en 2026
+const ANNEE_REPRISE        = 2021; // reprise du salon par Jess (affichée telle quelle)
+
+/* Nombre d'années écoulées depuis une année donnée. */
+function anneesDepuis(annee) {
+  return new Date().getFullYear() - annee;
 }
 
 
@@ -468,41 +470,95 @@ function calculerAnneeDynamique(refValue, refYear) {
 })();
 
 
-/* ── 09. Année courante footer ────────────────────────────── */
+/* ── 09. Chiffres & dates dynamiques ──────────────────────────
+   Injecte partout dans la page les valeurs calculées à partir des
+   DATES DE RÉFÉRENCE définies en haut de ce fichier.
 
-(function initYear() {
-  const el = qs('#currentYear');
-  if (el) el.textContent = new Date().getFullYear();
-})();
+   CLÉS DISPONIBLES
+   ────────────────────────────────────────────────────────────
+   anciennete-salon       ancienneté du salon        (35 en 2026)
+   experience-patronne    années de métier de Jess   (27 en 2026)
+   annees-depuis-reprise  années depuis la reprise   ( 5 en 2026)
+   annee-creation-salon   année de création          (1991)
+   annee-reprise          année de reprise           (2021)
+   annee-courante         année en cours             (2026)
 
+   FORMATS — choisir l'attribut selon le rendu voulu
+   ────────────────────────────────────────────────────────────
+   data-dynamic="clé"       → « 27 ans »  (texte courant, accroches)
+   data-dynamic-num="clé"   → « 27 »      (badges, compteurs stat)
+   data-dynamic-year="clé"  → « 2021 »    (dates : reprise, crédits,
+                                            mentions légales, RGPD…)
 
-/* ── 10. Chiffres dynamiques ──────────────────────────────────
-   Injecte l'ancienneté du salon et l'expérience de la patronne,
-   calculées automatiquement à partir des constantes de référence
-   définies en haut de ce fichier.
+   EXEMPLES D'USAGE
+   ────────────────────────────────────────────────────────────
+   <span data-dynamic="experience-patronne">27 ans</span>
+   <strong data-dynamic-num="anciennete-salon">35</strong>
+   Reprise en <span data-dynamic-year="annee-reprise">2021</span>
+   &copy; <span data-dynamic-year="annee-courante">2026</span> Nouvel Hair
+   Dernière mise à jour : <span data-dynamic-year="annee-courante">2026</span>
 
-   Deux formats selon l'attribut HTML :
-   · data-dynamic="clé"      → texte complet « X ans »  (accroches, texte)
-   · data-dynamic-num="clé"  → nombre seul « X »        (badges, compteurs)
+   ► FALLBACK SANS JS : chaque élément contient déjà la bonne valeur
+     écrite en dur dans index.html. Si le JS ne s'exécute pas, le texte
+     statique reste affiché — aucune case vide, jamais.               */
 
-   Fallback sans JS : chaque élément contient déjà une valeur statique
-   en dur dans le HTML (ex : « 35 ans »), donc rien n'apparaît vide. */
+(function initDynamicDates() {
+  const anneeCourante = new Date().getFullYear();
 
-(function initDynamicYears() {
   const values = {
-    'anciennete-salon':    calculerAnneeDynamique(SALON_ANCIENNETE_REF,    REF_YEAR),
-    'experience-patronne': calculerAnneeDynamique(EXPERIENCE_PATRONNE_REF, REF_YEAR),
+    'anciennete-salon':      anneesDepuis(ANNEE_CREATION_SALON),
+    'experience-patronne':   anneesDepuis(ANNEE_DEBUT_METIER),
+    'annees-depuis-reprise': anneesDepuis(ANNEE_REPRISE),
+    'annee-creation-salon':  ANNEE_CREATION_SALON,
+    'annee-reprise':         ANNEE_REPRISE,
+    'annee-courante':        anneeCourante,
   };
 
-  // Format « X ans »
+  // « X ans »
   qsa('[data-dynamic]').forEach(el => {
-    const val = values[el.dataset.dynamic];
-    if (val != null) el.textContent = val + ' ans';
+    const v = values[el.dataset.dynamic];
+    if (v != null) el.textContent = v + ' ans';
   });
 
-  // Format nombre seul « X »
+  // « X »
   qsa('[data-dynamic-num]').forEach(el => {
-    const val = values[el.dataset.dynamicNum];
-    if (val != null) el.textContent = val;
+    const v = values[el.dataset.dynamicNum];
+    if (v != null) el.textContent = v;
   });
+
+  // « 2021 » — années brutes (dates fixes ou année courante)
+  qsa('[data-dynamic-year]').forEach(el => {
+    const v = values[el.dataset.dynamicYear];
+    if (v != null) el.textContent = v;
+  });
+
+  /* ── Balises SEO & réseaux sociaux ──────────────────────────
+     Les balises <meta> ne peuvent pas contenir de <span>, on les
+     réécrit donc ici. Le HTML garde une version statique correcte
+     comme repli pour les robots qui n'exécutent pas JavaScript
+     (Googlebot, lui, exécute le JS et verra la version à jour).
+     Les placeholders {experience} et {anciennete} sont remplacés. */
+  const exp = values['experience-patronne'];
+  const anc = values['anciennete-salon'];
+
+  qsa('meta[data-dynamic-tpl]').forEach(meta => {
+    meta.setAttribute('content',
+      meta.dataset.dynamicTpl
+        .replace('{experience}', exp)
+        .replace('{anciennete}', anc)
+        .replace('{annee}', anneeCourante)
+    );
+  });
+
+  // Donnée structurée : date de fondation du salon (SEO local)
+  const ld = qs('script[type="application/ld+json"]');
+  if (ld) {
+    try {
+      const data = JSON.parse(ld.textContent);
+      data.foundingDate = String(ANNEE_CREATION_SALON);
+      ld.textContent = JSON.stringify(data, null, 2);
+    } catch (e) {
+      /* JSON-LD malformé : on ne casse rien, on laisse tel quel */
+    }
+  }
 })();
