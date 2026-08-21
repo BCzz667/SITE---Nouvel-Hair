@@ -1,0 +1,23 @@
+# ═══════════════════════════════════════════════════════════════════
+#  Nouvel Hair — robots.txt
+#
+#  ⚠️  DÉMO EN ATTENTE DE VALIDATION CLIENTE
+#
+#  Le site est actuellement fermé à tous les moteurs de recherche, car
+#  il publie les données commerciales réelles du salon (tarifs, horaires,
+#  équipe) avant l'accord de la cliente.
+#
+#  ─── POUR METTRE EN LIGNE POUR DE BON ───────────────────────────────
+#  1. Supprimer la ligne « Disallow: / » ci-dessous
+#  2. Décommenter les trois lignes du bloc « EN PRODUCTION »
+#  3. Passer les 3 pages HTML en « index, follow »
+#     (voir le bloc explicatif dans index.html)
+# ═══════════════════════════════════════════════════════════════════
+
+User-agent: *
+Disallow: /
+
+# ─── EN PRODUCTION : décommenter ce qui suit ───────────────────────
+# User-agent: *
+# Allow: /
+# Sitemap: https://www.nouvel-hair.fr/sitemap.xml

@@ -24,6 +24,7 @@ Le site reste fonctionnel sans connexion (polices de secours système).
 ├── index.html                        page principale
 ├── mentions-legales.html             mentions légales (LCEN)
 ├── politique-confidentialite.html    politique de confidentialité (RGPD)
+├── robots.txt                        ⚠️ bloque l'indexation (démo)
 ├── css/
 │   └── style.css           feuille de styles (un seul fichier)
 ├── js/
@@ -287,7 +288,45 @@ le navigateur et est expressément dispensée de consentement.
 
 ---
 
+## ⚠️ Le site est actuellement invisible sur Google
+
+Tant que la cliente n'a pas validé, le site est **fermé aux moteurs de recherche** :
+il publie ses tarifs, horaires et prénoms d'équipe réels sur une URL publique.
+
+| Fichier | Ce qui bloque l'indexation |
+|---------|----------------------------|
+| `index.html`, `mentions-legales.html`, `politique-confidentialite.html` | `<meta name="robots" content="noindex, nofollow">` |
+| `robots.txt` | `Disallow: /` |
+
+### Le retirer le jour du lancement
+
+1. Dans les **3 pages HTML**, remplacer `noindex, nofollow` par `index, follow`
+   (un bloc de commentaire détaillé se trouve juste au-dessus, dans `index.html`)
+2. Dans **`robots.txt`**, supprimer `Disallow: /` et décommenter le bloc « EN PRODUCTION »
+
+Vérification en une commande :
+
+```bash
+grep -c 'noindex' index.html mentions-legales.html politique-confidentialite.html robots.txt
+# Doit renvoyer 0 partout une fois le site lancé
+```
+
+> **À ne pas oublier.** Un site laissé en `noindex` n'apparaît jamais dans Google,
+> quelle que soit la qualité du référencement local. C'est l'erreur la plus
+> fréquente au moment d'une mise en ligne.
+
+### Ce que le `noindex` ne fait pas
+
+Il empêche le **référencement**, pas l'**accès**. Toute personne disposant de l'URL
+peut consulter le site, et le code source reste visible sur GitHub tant que le dépôt
+est public. Pour une confidentialité réelle avant validation, il faudrait montrer le
+site en local (`double-clic → index.html`) plutôt qu'en ligne.
+
+---
+
 ## Checklist avant mise en ligne
+
+- [ ] **Retirer le `noindex` des 3 pages HTML et du `robots.txt`** (voir ci-dessus)
 
 - [ ] Remplacer toutes les photos placeholders
 - [ ] Vérifier et compléter tous les prix (`-- €`)
